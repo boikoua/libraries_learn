@@ -1,49 +1,13 @@
 <script setup>
-import { CheckCircleIcon } from '@heroicons/vue/24/solid'
-import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
-
-// Все пункты для нижнего меню которые мы отрендерим в нижней навигации
-const navItems = ['timeline', 'activities', 'progress']
+import TheHeader from './components/TheHeader.vue'
+import TheMain from './components/TheMain.vue'
+import TheFooter from './components/TheFooter.vue'
 </script>
 
 <template>
-  <header class="sticky top-0 z-20 flex justify-between items-center border-b bg-white p-3">
-    <a href="#">
-      <img src="./assets/img/logo.png" alt="Logo" class="h-9" />
-    </a>
-
-    <a href="#" class="text-sm">
-      <div v-if="true" class="flex items-center gap-1">
-        <span>Day complete!</span>
-        <CheckCircleIcon class="w-7 text-green-500" />
-      </div>
-
-      <div v-else class="flex items-center gap-1">
-        <div>Progress: <span class="font-mono">20%</span></div>
-        <div class="h-3 w-3 rounded-full bg-red-500"></div>
-      </div>
-    </a>
-  </header>
-
-  <main class="flex flex-col flex-grow"></main>
-
-  <footer class="sticky bottom-0 z-20 bg-white border-t">
-    <nav>
-      <ul class="flex items-center justify-around">
-        <li v-for="page in navItems" :key="page" class="flex-1">
-          <a
-            :href="`#${page}`"
-            class="flex flex-col justify-center items-center border p-2 text-xs capitalize"
-          >
-            <ClockIcon v-if="page === 'timeline'" class="h-6 w-6" />
-            <ListBulletIcon v-else-if="page === activities" class="h-6 w-6" />
-            <ChartBarIcon v-else class="h-6 w-6" />
-            <span>{{ page }}</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </footer>
+  <TheHeader />
+  <TheMain />
+  <TheFooter />
 </template>
 
 <style scoped></style>
