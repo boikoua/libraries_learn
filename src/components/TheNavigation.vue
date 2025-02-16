@@ -1,24 +1,34 @@
 <script setup>
-import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
+import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline';
+import NavItem from './NavItem.vue';
 
 // Все пункты для нижнего меню которые мы отрендерим в нижней навигации
-const navItems = ['timeline', 'activities', 'progress']
+const navItems = [
+  {
+    id: 1,
+    title: 'timeline',
+    icon: ClockIcon,
+  },
+  {
+    id: 2,
+    title: 'activities',
+    icon: ListBulletIcon,
+  },
+  {
+    id: 3,
+    title: 'progress',
+    icon: ChartBarIcon,
+  },
+];
 </script>
 
 <template>
   <nav>
     <ul class="flex items-center justify-around">
-      <li v-for="page in navItems" :key="page" class="flex-1">
-        <a
-          :href="`#${page}`"
-          class="flex flex-col justify-center items-center border p-2 text-xs capitalize"
-        >
-          <ClockIcon v-if="page === 'timeline'" class="h-6 w-6" />
-          <ListBulletIcon v-else-if="page === 'activities'" class="h-6 w-6" />
-          <ChartBarIcon v-else class="h-6 w-6" />
-          <span>{{ page }}</span>
-        </a>
-      </li>
+      <NavItem v-for="item in navItems" :key="item.id" :href="`#${item.title}`">
+        <component :is="item.icon" class="h-6 w-6" />
+        <span>{{ item.title }}</span>
+      </NavItem>
     </ul>
   </nav>
 </template>
