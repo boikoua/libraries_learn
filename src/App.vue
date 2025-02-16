@@ -1,6 +1,9 @@
 <script setup>
 import { CheckCircleIcon } from '@heroicons/vue/24/solid'
 import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline'
+
+// Все пункты для нижнего меню которые мы отрендерим в нижней навигации
+const navItems = ['timeline', 'activities', 'progress']
 </script>
 
 <template>
@@ -27,32 +30,16 @@ import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outli
   <footer class="sticky bottom-0 z-20 bg-white border-t">
     <nav>
       <ul class="flex items-center justify-around">
-        <li class="flex-1">
+        <li v-for="page in navItems" :key="page" class="flex-1">
           <a
+            :href="`#${page}`"
             class="flex flex-col justify-center items-center border p-2 text-xs capitalize"
-            href="#timeline"
           >
-            <ClockIcon class="h-6 w-6" />
-            <span>timeline</span>
+            <ClockIcon v-if="page === 'timeline'" class="h-6 w-6" />
+            <ListBulletIcon v-else-if="page === activities" class="h-6 w-6" />
+            <ChartBarIcon v-else class="h-6 w-6" />
+            <span>{{ page }}</span>
           </a>
-        </li>
-        <li class="flex-1">
-          <a
-            class="flex flex-col justify-center items-center border p-2 text-xs capitalize"
-            href="#activities"
-          >
-            <ListBulletIcon class="h-6 w-6" />
-            <span>activities</span></a
-          >
-        </li>
-        <li class="flex-1">
-          <a
-            class="flex flex-col justify-center items-center border p-2 text-xs capitalize"
-            href="#progress"
-          >
-            <ChartBarIcon class="h-6 w-6" />
-            <span>progress</span></a
-          >
         </li>
       </ul>
     </nav>
