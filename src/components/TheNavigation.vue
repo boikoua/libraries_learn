@@ -1,9 +1,11 @@
 <script setup>
-import { ref } from 'vue';
 import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline';
 import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './../utils/constants';
 import NavItem from './NavItem.vue';
-import { normalizePageHash } from '@/utils/normalizePageHash';
+
+defineProps(['currentPage']);
+
+const emit = defineEmits(['navigate']);
 
 // Все пункты для нижнего меню которые мы отрендерим в нижней навигации
 const navItems = [
@@ -23,9 +25,6 @@ const navItems = [
     icon: ChartBarIcon,
   },
 ];
-
-// Текущая страница
-const currentPage = ref(normalizePageHash(navItems));
 </script>
 
 <template>
@@ -36,7 +35,7 @@ const currentPage = ref(normalizePageHash(navItems));
         :key="item.id"
         :href="`#${item.title}`"
         :class="{ 'bg-gray-200 pointer-events-none': item.title === currentPage }"
-        @click="currentPage = item.title"
+        @click="emit('navigate', item.title)"
       >
         <component :is="item.icon" class="h-6 w-6" />
         <span>{{ item.title }}</span>
