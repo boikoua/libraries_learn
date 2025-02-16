@@ -1,29 +1,31 @@
 <script setup>
 import { ref } from 'vue';
 import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline';
+import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './../utils/constants';
 import NavItem from './NavItem.vue';
+import { normalizePageHash } from '@/utils/normalizePageHash';
 
 // Все пункты для нижнего меню которые мы отрендерим в нижней навигации
 const navItems = [
   {
     id: 1,
-    title: 'timeline',
+    title: PAGE_TIMELINE,
     icon: ClockIcon,
   },
   {
     id: 2,
-    title: 'activities',
+    title: PAGE_ACTIVITIES,
     icon: ListBulletIcon,
   },
   {
     id: 3,
-    title: 'progress',
+    title: PAGE_PROGRESS,
     icon: ChartBarIcon,
   },
 ];
 
 // Текущая страница
-const currentPage = ref('timeline');
+const currentPage = ref(normalizePageHash(navItems));
 </script>
 
 <template>
