@@ -24,3 +24,19 @@ export const NAV_ITEMS = [
     icon: ChartBarIcon,
   },
 ];
+
+// Значение всех вариантов для выпадающего списка
+export const OPTIONS_VALUES = [
+  {
+    value: 1,
+    label: 'Coding',
+  },
+  {
+    value: 2,
+    label: 'Reading',
+  },
+  {
+    value: 3,
+    label: 'Training',
+  },
+];

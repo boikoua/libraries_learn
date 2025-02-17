@@ -1,15 +1,18 @@
 <script setup>
 import { ref } from 'vue';
-import { normalizePageHash } from '@/utils/normalizePageHash';
 import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './utils/constants';
 import TheHeader from './components/TheHeader.vue';
 import TheNavigation from './components/TheNavigation.vue';
 import TheTimeline from './pages/TheTimeline.vue';
 import TheActivities from './pages/TheActivities.vue';
 import TheProgress from './pages/TheProgress.vue';
+import { generateTimelineItems, normalizePageHash } from './utils/functions';
 
 // Текущая страница
 const currentPage = ref(normalizePageHash());
+
+// Список часов
+const timelineItems = generateTimelineItems();
 </script>
 
 <template>
@@ -19,7 +22,7 @@ const currentPage = ref(normalizePageHash());
   />
 
   <main class="flex flex-col flex-grow">
-    <TheTimeline v-show="currentPage === PAGE_TIMELINE" />
+    <TheTimeline v-show="currentPage === PAGE_TIMELINE" :timeline-items="timelineItems" />
 
     <TheActivities v-show="currentPage === PAGE_ACTIVITIES" />
 
