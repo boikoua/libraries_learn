@@ -1,37 +1,17 @@
 <script setup>
-import { ClockIcon, ListBulletIcon, ChartBarIcon } from '@heroicons/vue/24/outline';
-import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './../utils/constants';
+import { NAV_ITEMS } from '@/utils/constants';
 import NavItem from './NavItem.vue';
 
 defineProps(['currentPage']);
 
 const emit = defineEmits(['navigate']);
-
-// Все пункты для нижнего меню которые мы отрендерим в нижней навигации
-const navItems = [
-  {
-    id: 1,
-    title: PAGE_TIMELINE,
-    icon: ClockIcon,
-  },
-  {
-    id: 2,
-    title: PAGE_ACTIVITIES,
-    icon: ListBulletIcon,
-  },
-  {
-    id: 3,
-    title: PAGE_PROGRESS,
-    icon: ChartBarIcon,
-  },
-];
 </script>
 
 <template>
   <nav>
     <ul class="flex items-center justify-around">
       <NavItem
-        v-for="item in navItems"
+        v-for="item in NAV_ITEMS"
         :key="item.id"
         :href="`#${item.title}`"
         :class="{ 'bg-gray-200 pointer-events-none': item.title === currentPage }"
