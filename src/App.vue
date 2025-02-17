@@ -13,7 +13,10 @@ const currentPage = ref(normalizePageHash());
 </script>
 
 <template>
-  <TheHeader />
+  <TheHeader
+    @go-to-timeline="currentPage = PAGE_TIMELINE"
+    @go-to-progress="currentPage = PAGE_PROGRESS"
+  />
 
   <main class="flex flex-col flex-grow">
     <TheTimeline v-show="currentPage === PAGE_TIMELINE" />
