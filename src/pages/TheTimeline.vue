@@ -1,7 +1,7 @@
 <script setup>
-const props = defineProps(['timelineItems']);
-
 import TimelineItem from '@/components/TimelineItem.vue';
+
+const props = defineProps(['timelineItems']);
 </script>
 
 <template>
