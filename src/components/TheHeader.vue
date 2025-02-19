@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <header class="py-14">
     <h1 class="text-[72px] text-center font-bold">
