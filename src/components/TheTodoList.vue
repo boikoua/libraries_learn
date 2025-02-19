@@ -1,23 +1,9 @@
 <script setup>
 import TheTodoItem from './TheTodoItem.vue';
 
-const todos = [
-  {
-    id: 1,
-    text: 'Drink Coffee',
-    complete: false,
-  },
-  {
-    id: 2,
-    text: 'Coding my app',
-    complete: true,
-  },
-  {
-    id: 3,
-    text: 'Readind',
-    complete: false,
-  },
-];
+defineProps({
+  todos: Array,
+});
 </script>
 
 <template>

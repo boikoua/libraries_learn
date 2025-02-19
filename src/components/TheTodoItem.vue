@@ -5,7 +5,7 @@ const props = defineProps({
   todo: Object,
 });
 
-const { text, complete } = props.todo;
+const { id, text, complete } = props.todo;
 </script>
 
 <template>
