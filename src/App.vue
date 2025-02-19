@@ -33,6 +33,14 @@ function addNewTodo(text) {
 
   todos.push(newTodo);
 }
+
+function deleteTodo(id) {
+  const index = todos.findIndex((todo) => todo.id === id);
+
+  if (index !== -1) {
+    todos.splice(index, 1);
+  }
+}
 </script>
 
 <template>
@@ -42,7 +50,7 @@ function addNewTodo(text) {
     <main>
       <TheForm :addTodo="addNewTodo" />
 
-      <TheTodoList :todos="todos" />
+      <TheTodoList :todos="todos" :delete-todo="deleteTodo" />
     </main>
   </div>
 </template>

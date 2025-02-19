@@ -3,6 +3,7 @@ import { ClipboardIcon, TrashIcon, CheckCircleIcon } from '@heroicons/vue/24/sol
 
 const props = defineProps({
   todo: Object,
+  deleteTodo: Function,
 });
 
 const { id, text, complete } = props.todo;
@@ -16,7 +17,10 @@ const { id, text, complete } = props.todo;
     </div>
 
     <div class="flex gap-3">
-      <TrashIcon class="w-7 h-7 cursor-pointer transition hover:text-red-600" />
+      <TrashIcon
+        class="w-7 h-7 cursor-pointer transition hover:text-red-600"
+        @click="deleteTodo(id)"
+      />
       <CheckCircleIcon
         :class="[
           'w-7 h-7 cursor-pointer transition hover:text-green-500',
