@@ -1,10 +1,10 @@
 <script setup>
-import { reactive } from 'vue';
+import { ref } from 'vue';
 import TheForm from './components/TheForm.vue';
 import TheHeader from './components/TheHeader.vue';
 import TheTodoList from './components/TheTodoList.vue';
 
-let todos = reactive([
+const todos = ref([
   {
     id: 1,
     text: 'Drink Coffee',
@@ -26,19 +26,23 @@ function addNewTodo(text) {
   if (!text.trim()) return;
 
   const newTodo = {
-    id: todos.length + 1,
+    id: todos.value.length + 1,
     text: text,
     complete: false,
   };
 
-  todos.push(newTodo);
+  todos.value.push(newTodo);
 }
 
 function deleteTodo(id) {
-  const index = todos.findIndex((todo) => todo.id === id);
+  todos.value = todos.value.filter((todo) => todo.id !== id);
+}
 
-  if (index !== -1) {
-    todos.splice(index, 1);
+function toggleComplete(id) {
+  const todo = todos.value.find((todo) => todo.id === id);
+
+  if (todo) {
+    todo.complete = !todo.complete;
   }
 }
 </script>
@@ -50,7 +54,7 @@ function deleteTodo(id) {
     <main>
       <TheForm :addTodo="addNewTodo" />
 
-      <TheTodoList :todos="todos" :delete-todo="deleteTodo" />
+      <TheTodoList :todos="todos" :delete-todo="deleteTodo" :toggle-complete="toggleComplete" />
     </main>
   </div>
 </template>
