@@ -10,6 +10,7 @@ defineProps({
 
 <template>
   <article
+    data-aos="fade-left"
     class="flex justify-between items-center w-full py-3 px-6 bg-white rounded-lg shadow-2xl"
   >
     <div class="flex items-center gap-3">

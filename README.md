@@ -1,35 +1,35 @@
-# .
+# OnTrack App
 
-This template should help get you started developing with Vue 3 in Vite.
+## Description
 
-## Recommended IDE Setup
+The project is a simple web application "Todo List" developed using Vue 3 and modern web technologies. Users can add, delete tasks, and mark them as completed. The application is designed for desktop devices only and uses Tailwind CSS for styling.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Technologies that have been used
 
-## Customize configuration
+- HTML5
+- CSS3
+- TAILWIND
+- VUE 3
+- GIT
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Instructions for working with the project
 
-## Project Setup
+1. Cloning a repository. You need to write `git clone https://github.com/boikoua/vue_on-track` in terminal.
 
-```sh
-npm install
-```
+2. Go to the project folder `cd vue_on-track`.
 
-### Compile and Hot-Reload for Development
+3. Check the node version. The version of node should be `v20.x.x`. To do this, type the command `node -v` in the terminal.
 
-```sh
-npm run dev
-```
+4. Install dependencies. To do this, enter the `npm install` command.
 
-### Compile and Minify for Production
+5. Run the project. To do this, enter the `npm run dev` command.
+   After that the project will be available to you at `http://http://localhost:5173/`.
 
-```sh
-npm run build
-```
+## View project
 
-### Lint with [ESLint](https://eslint.org/)
+> Link to the project
+> [DEMO LINK](https://boikoua.github.io/vue_on-track/).
 
-```sh
-npm run lint
-```
+## Preview
+
+![Preview](./preview.png)

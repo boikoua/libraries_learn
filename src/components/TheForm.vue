@@ -14,7 +14,7 @@ function submitForm(text) {
 </script>
 
 <template>
-  <form @submit.prevent="submitForm(inputValue)" class="flex gap-5 mb-10">
+  <form @submit.prevent="submitForm(inputValue)" class="flex gap-5 mb-6">
     <input
       type="text"
       placeholder="Your new new todo..."
