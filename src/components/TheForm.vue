@@ -18,10 +18,14 @@ function submitForm(text) {
     <input
       type="text"
       placeholder="Your new new todo..."
-      class="w-full px-6 rounded-lg text-2xl outline-none"
+      class="w-full px-6 rounded-lg text-2xl outline-none transition focus:border-2 focus:border-blue-600 focus:shadow-2xl"
       v-model="inputValue"
+      autofocus
     />
-    <button type="submit" class="py-3 px-10 bg-blue-700 text-white font-bold rounded-lg text-2xl">
+    <button
+      type="submit"
+      class="py-3 px-10 bg-blue-700 text-white font-bold rounded-lg text-2xl transition hover:shadow-2xl"
+    >
       Submit
     </button>
   </form>

@@ -9,7 +9,9 @@ defineProps({
 </script>
 
 <template>
-  <article class="flex justify-between items-center w-full py-3 px-6 bg-white rounded-lg">
+  <article
+    class="flex justify-between items-center w-full py-3 px-6 bg-white rounded-lg shadow-2xl"
+  >
     <div class="flex items-center gap-3">
       <ClipboardIcon class="w-7 h-7" />
       <p class="text-2xl">{{ todo.text }}</p>

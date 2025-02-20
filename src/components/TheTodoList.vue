@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex flex-col gap-5">
+  <div class="flex flex-col gap-5 mb-10">
     <TheTodoItem
       v-for="todo in todos"
       :key="todo.id"

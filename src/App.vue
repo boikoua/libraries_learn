@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { v4 as randomId } from 'uuid';
 import TheForm from './components/TheForm.vue';
 import TheHeader from './components/TheHeader.vue';
 import TheTodoList from './components/TheTodoList.vue';
@@ -22,20 +23,32 @@ const todos = ref([
   },
 ]);
 
+onMounted(() => {
+  const savedTodos = localStorage.getItem('todos-on-track');
+
+  if (savedTodos) {
+    todos.value = JSON.parse(savedTodos);
+  }
+});
+
 function addNewTodo(text) {
   if (!text.trim()) return;
 
   const newTodo = {
-    id: todos.value.length + 1,
+    id: randomId(),
     text: text,
     complete: false,
   };
 
   todos.value.push(newTodo);
+
+  localStorage.setItem('todos-on-track', JSON.stringify(todos.value));
 }
 
 function deleteTodo(id) {
   todos.value = todos.value.filter((todo) => todo.id !== id);
+
+  localStorage.setItem('todos-on-track', JSON.stringify(todos.value));
 }
 
 function toggleComplete(id) {
@@ -43,8 +56,11 @@ function toggleComplete(id) {
 
   if (todo) {
     todo.complete = !todo.complete;
+    localStorage.setItem('todos-on-track', JSON.stringify(todos.value));
   }
 }
+
+const completedTodos = computed(() => todos.value.filter((todo) => todo.complete).length);
 </script>
 
 <template>
@@ -56,5 +72,12 @@ function toggleComplete(id) {
 
       <TheTodoList :todos="todos" :delete-todo="deleteTodo" :toggle-complete="toggleComplete" />
     </main>
+
+    <footer v-if="completedTodos">
+      <h2 class="text-2xl text-white text-center">
+        You have completed <span class="font-bold text-3xl">{{ completedTodos }}</span>
+        {{ completedTodos === 1 ? 'todo' : 'todos' }}!
+      </h2>
+    </footer>
   </div>
 </template>
